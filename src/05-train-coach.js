@@ -1,3 +1,4 @@
+
 /**
  * 🚂 Train Coach Finder - Array Search & Check
  *
@@ -48,21 +49,39 @@
  *   areAllConfirmed(passengers)          // => true/false
  */
 export function findPassenger(passengers, name) {
-  // Your code here
+  if(!Array.isArray(passengers) || typeof name != "string" || name == "") return undefined;
+
+return passengers.find( naam => naam.name.toLowerCase() == name.toLowerCase());
 }
 
 export function getPassengerIndex(passengers, name) {
-  // Your code here
+   if(!Array.isArray(passengers) || typeof name != "string" || name == "") return -1;
+
+return passengers.findIndex(naam => naam.name.toLowerCase() == name.toLowerCase() );
 }
 
 export function isAnyWaitlisted(passengers) {
-  // Your code here
+  if(!Array.isArray(passengers) || passengers.length == 0) return false ;
+
+  return passengers.some(naam => naam.status == "waitlisted" );
 }
 
 export function areAllConfirmed(passengers) {
-  // Your code here
+    if(!Array.isArray(passengers) || passengers.length == 0) return false ;
+   
+
+    return passengers.every(naam => naam.status == "confirmed");
 }
 
 export function getWaitlistedPassengers(passengers) {
-  // Your code here
+    if(!Array.isArray(passengers) || passengers == []) return [] ;
+
+   let waitlisted = passengers.filter(naam => naam.status == "waitlisted");
+    if(waitlisted) return waitlisted;
+
+    else return [];
 }
+
+
+
+// npm test -- 05-train
