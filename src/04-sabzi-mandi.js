@@ -1,3 +1,5 @@
+
+
 /**
  * 🥬 Sabzi Mandi Shopping Cart - Array Basics
  *
@@ -48,21 +50,49 @@
  *   removeLastItem(["tamatar", "pyaaz", "mirchi"])   // => "mirchi"
  */
 export function addToCart(cart, item) {
-  // Your code here
+  if(typeof item != "string" || item == "") return cart.length ;
+  if(!Array.isArray(cart)) return -1;
+
+   cart.push(item);
+  return cart.length;
 }
 
 export function addUrgentItem(cart, item) {
-  // Your code here
+  if(!Array.isArray(cart)) return [];
+  if(typeof item != "string" || item == "") return cart;
+
+  cart.unshift(item);
+  return cart;
 }
 
 export function removeLastItem(cart) {
-  // Your code here
+if(!Array.isArray(cart) || cart == []) return undefined;
+
+let removed = cart.pop();
+return removed;
 }
 
 export function isInCart(cart, item) {
-  // Your code here
+if(!Array.isArray(cart) || cart == [] ) return  false;
+
+if(cart.includes(item)) return true;
+else return false;
 }
 
 export function mergeCarts(cart1, cart2) {
-  // Your code here
+  if(!Array.isArray(cart1)) {
+    cart1 = [];
+  }
+  if(!Array.isArray(cart2)) {
+       cart2 = [];
+  }
+
+
+ let merged =  cart1.concat(cart2);
+ return merged;
 }
+
+
+
+
+//   npm test -- 04-sabzi
