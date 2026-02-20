@@ -58,21 +58,41 @@
  *   isTruthy("")                 // => false
  */
 export function getDataType(value) {
-  // Your code here
+
+if(value === null) return "null";
+if(Array.isArray(value)) return "array";
+
+return typeof value;
+
 }
 
 export function isValidParcelWeight(weight) {
-  // Your code here
+  if(Number.isNaN(weight) || !Number.isFinite(weight) || typeof weight != "number" || 
+    weight === 0 || weight === null || weight < 0) return false;
+
+  if(weight > 0 && Number.isFinite(weight)) return true;
 }
 
 export function isWholeNumber(value) {
-  // Your code here
+  if(!Number.isInteger(value) || Number.isNaN(value) || !Number.isFinite(value)
+  || typeof value != "number") return false;
+
+  if(Number.isInteger(value)) return true;
 }
 
 export function isNotANumber(value) {
-  // Your code here
+  if(value === null || Number.isInteger(value) || !Number.isNaN(value) || typeof value === "string"
+|| typeof value === "undefined" ) return false;
+
+if(Number.isNaN(value)) return true;
 }
 
 export function isTruthy(value) {
-  // Your code here
+  if(value === null || value === 0 || value === "" || value === undefined || 
+      Number.isNaN(value) || value === false) return false;
+      else return true;
 }
+
+
+
+// npm test -- 10-pincode
